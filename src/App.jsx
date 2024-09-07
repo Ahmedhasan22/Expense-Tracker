@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Expenses from "./components/expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-
+import ExpenseFilter from "./components/ExpenseFilter/ExpenseFilter";
 function App() {
   const expenses = [
     {
@@ -35,7 +35,6 @@ function App() {
         <h1>Expense Tracker</h1>
       </header>
       <NewExpense onAddExpense={addExpense} />
-      
       <Expenses expenses={expensesState} />
     </div>
   );

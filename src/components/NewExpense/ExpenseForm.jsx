@@ -1,7 +1,6 @@
 import "./ExpenseForm.css";
 import React, { useState } from "react";
 const ExpenseForm = (props) => {
-  // const title="";
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
@@ -28,12 +27,13 @@ const ExpenseForm = (props) => {
     setTitle("");
     setAmount("");
     setDate("");
+    props.onCancel();
   };
 
   return (
     <form className="expense-form" onSubmit={submitHandler}>
       <div className="form-control">
-        <h3 htmlFor="expense-title">Title</h3>
+        <h2 htmlFor="expense-title">Title</h2>
         <input
           type="text"
           id="expense-title"
@@ -43,7 +43,7 @@ const ExpenseForm = (props) => {
         />
       </div>
       <div className="form-control">
-        <h3 htmlFor="expense-amount">Amount</h3>
+        <h2 htmlFor="expense-amount">Amount</h2>
         <input
           type="number"
           id="expense-amount"
@@ -53,7 +53,7 @@ const ExpenseForm = (props) => {
         />
       </div>
       <div className="form-control">
-        <h3 htmlFor="expense-date">Date</h3>
+        <h2 htmlFor="expense-date">Date</h2>
         <input
           type="date"
           id="expense-date"
@@ -64,14 +64,18 @@ const ExpenseForm = (props) => {
           max="2024-12-31"
         />
       </div>
-      <div className="form-control" >
-      <button id="add-expense" type="submit">
-        Add Expense
-      </button>
+      <div className="form-control-button">
+        <button className="add-expense" type="submit" name="submit">
+          Add Expense
+        </button>
+        <button className="add-expense" name="cancel" onClick={props.onCancel}>
+          Cancel
+        </button>
       </div>
-        
     </form>
   );
 };
+
+// export default ExpenseFormButton;
 
 export default ExpenseForm;
